@@ -21,11 +21,15 @@ export const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 40,
     marginBottom: 16,
+    fontFamily: theme.fonts.title700,
+    lineHeight: 40,
   },
   subtitle: {
     color: theme.colors.heading,
     textAlign: "center",
     fontSize: 15,
     marginBottom: 64,
+    fontFamily: theme.fonts.title500,
+    lineHeight: 25,
   },
 });
