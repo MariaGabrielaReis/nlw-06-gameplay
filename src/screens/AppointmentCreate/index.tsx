@@ -50,7 +50,9 @@ export function AppointmentCreate() {
                 }
 
                 <View style={styles.selectBody}>
-                  <Text style={styles.label}>Selecione um servidor</Text>
+                  <Text style={[styles.label, { marginBottom: 0 }]}>
+                    Selecione um servidor
+                  </Text>
                 </View>
                 <Feather
                   name={"chevron-right"}
