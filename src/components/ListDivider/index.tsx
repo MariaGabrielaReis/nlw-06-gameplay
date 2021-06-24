@@ -3,6 +3,10 @@ import { View } from "react-native";
 
 import { styles } from "./styles";
 
-export function ListDivider() {
-  return <View style={styles.container} />;
+type Props = {
+  modal?: boolean;
+};
+
+export function ListDivider({ modal }: Props) {
+  return <View style={[styles.container, { width: modal ? "72%" : "78%" }]} />;
 }

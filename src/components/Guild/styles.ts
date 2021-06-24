@@ -22,6 +22,6 @@ export const styles = StyleSheet.create({
     fontFamily: theme.fonts.text400,
     color: theme.colors.highlight,
     fontSize: 13,
-    marginBottom: 24,
+    marginBottom: 16,
   },
 });

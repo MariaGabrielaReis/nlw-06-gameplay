@@ -13,6 +13,8 @@ type Props = {
 export function Guilds({ handleGuildSelect }: Props) {
   const guilds = [
     { id: "1", name: "Lendários", icon: "hehehe.png", owner: true },
+    { id: "2", name: "Valorosos", icon: "hehehe.png", owner: true },
+    { id: "3", name: "Cozinheiros", icon: "hehehe.png", owner: true },
   ];
 
   return (
@@ -23,7 +25,7 @@ export function Guilds({ handleGuildSelect }: Props) {
         renderItem={({ item }) => (
           <Guild data={item} onPress={() => handleGuildSelect(item)} />
         )}
-        ItemSeparatorComponent={() => <ListDivider />}
+        ItemSeparatorComponent={() => <ListDivider modal />}
         showsVerticalScrollIndicator={false}
         style={styles.guilds}
       />
