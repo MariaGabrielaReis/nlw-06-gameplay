@@ -3,19 +3,21 @@ import { theme } from "../../global/styles/theme";
 
 export const styles = StyleSheet.create({
   container: {
+    width: 104,
+    height: 120,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 8,
+    marginRight: 8,
   },
   content: {
     width: 104,
-    height: 120,
-    marginRight: 8,
+    height: 116,
     borderRadius: 8,
     backgroundColor: theme.colors.gray,
     justifyContent: "space-between",
     alignItems: "center",
-    paddingVertical: 10,
+    paddingVertical: 12,
   },
   title: {
     fontFamily: theme.fonts.title500,
@@ -35,7 +37,7 @@ export const styles = StyleSheet.create({
     width: 12,
     height: 12,
     alignSelf: "flex-end",
-    marginRight: 7,
+    marginRight: 12,
     backgroundColor: theme.colors.primary,
     borderRadius: 3,
   },
