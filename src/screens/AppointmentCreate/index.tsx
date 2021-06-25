@@ -31,9 +31,17 @@ export function AppointmentCreate() {
     setOpenGuildModal(true);
   }
 
+  function handleCloseGuilds() {
+    setOpenGuildModal(false);
+  }
+
   function handleGuildSelect(guildSelected: GuildProps) {
     setGuild(guildSelected);
     setOpenGuildModal(false);
+  }
+
+  function handleCategorySelect(categoryId: string) {
+    setCategory(categoryId);
   }
 
   return (
@@ -51,7 +59,7 @@ export function AppointmentCreate() {
 
           <CategorySelect
             hasCheckBox
-            setCategory={setCategory}
+            setCategory={handleCategorySelect}
             categorySelected={category}
           />
 
@@ -110,7 +118,7 @@ export function AppointmentCreate() {
         </View>
       </ScrollView>
 
-      <ModalView visible={openGuildModal}>
+      <ModalView visible={openGuildModal} closeModal={handleCloseGuilds}>
         <Guilds handleGuildSelect={handleGuildSelect} />
       </ModalView>
     </KeyboardAvoidingView>

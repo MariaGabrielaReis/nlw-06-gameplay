@@ -26,6 +26,7 @@ export function Guilds({ handleGuildSelect }: Props) {
           <Guild data={item} onPress={() => handleGuildSelect(item)} />
         )}
         ItemSeparatorComponent={() => <ListDivider modal />}
+        contentContainerStyle={{ paddingBottom: 32, paddingTop: 16 }}
         showsVerticalScrollIndicator={false}
         style={styles.guilds}
       />

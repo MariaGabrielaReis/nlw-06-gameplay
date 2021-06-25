@@ -8,14 +8,8 @@ import PlayerSvg from "../../assets/player.svg";
 import CalendarSvg from "../../assets/calendar.svg";
 
 import { GuildIcon } from "../GuildIcon";
+import { GuildProps } from "../Guild";
 import { categories } from "../../utils/categories";
-
-export type GuildProps = {
-  id: string;
-  name: string;
-  icon: null;
-  owner: boolean;
-};
 
 export type AppointmentProps = {
   id: string;
