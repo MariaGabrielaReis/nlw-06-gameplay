@@ -32,6 +32,7 @@ type AuthContextData = {
   user: User;
   loading: boolean;
   signIn: () => Promise<void>;
+  singOut: () => Promise<void>;
 };
 
 type AuthProviderProps = {
@@ -93,6 +94,11 @@ function AuthProvider({ children }: AuthProviderProps) {
     }
   }
 
+  async function singOut() {
+    setUser({} as User);
+    await AsyncStorage.removeItem(COLLECTION_USERS);
+  }
+
   async function loadUserStorageData() {
     const storage = await AsyncStorage.getItem(COLLECTION_USERS);
 
@@ -109,7 +115,7 @@ function AuthProvider({ children }: AuthProviderProps) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, loading, signIn }}>
+    <AuthContext.Provider value={{ user, loading, signIn, singOut }}>
       {children}
     </AuthContext.Provider>
   );
