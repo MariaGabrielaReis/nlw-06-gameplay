@@ -6,7 +6,7 @@
   <a href="#projeto">Sobre a aplicação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#demo">Demonstração</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#requisitos">Como rodar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#licenca">Licença</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#licenca">Licença</a>
 </p>
 
 <span id="projeto">
@@ -23,6 +23,13 @@ As seguintes tecnologias e ferramentas estão sendo utilizadas neste projeto:
 - [React Native](https://reactnative.dev/)
 - [Expo](https://expo.io/)
 - [TypeScript](https://www.typescriptlang.org/)
+  
+### Funcionalidades
+- [X] Login com autenticação utilizando o Discord
+- [X] Listagem de partidas agendadas
+- [X] Agendamento de novas partidas
+- [X] Visualização de detalhes da partida
+- [X] Compartilhamento de link para servidor/partida
 
 <span id="demo">
   
