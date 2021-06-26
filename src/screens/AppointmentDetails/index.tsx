@@ -2,6 +2,7 @@ import React from "react";
 import { View, ImageBackground, Text, FlatList } from "react-native";
 import { BorderlessButton } from "react-native-gesture-handler";
 import { Fontisto } from "@expo/vector-icons";
+import { useRoute } from "@react-navigation/native";
 
 import { styles } from "./styles";
 import { theme } from "../../global/styles/theme";
@@ -12,8 +13,16 @@ import { ListHeader } from "../../components/ListHeader";
 import { Member } from "../../components/Member";
 import { ListDivider } from "../../components/ListDivider";
 import { ButtonIcon } from "../../components/ButtonIcon";
+import { AppointmentProps } from "../../components/Appointment";
+
+type Params = {
+  guildSelected: AppointmentProps;
+};
 
 export function AppointmentDetails() {
+  const route = useRoute();
+  const { guildSelected } = route.params as Params;
+
   const members = [
     {
       id: "1",
@@ -28,6 +37,7 @@ export function AppointmentDetails() {
       status: "offline",
     },
   ];
+
   return (
     <View style={styles.container}>
       <Header
@@ -40,10 +50,8 @@ export function AppointmentDetails() {
       />
       <ImageBackground source={BannerImg} style={styles.banner}>
         <View style={styles.bannerContent}>
-          <Text style={styles.title}>Lendários</Text>
-          <Text style={styles.subtitle}>
-            É hoje que vamos chegar ao challenger sem perder uma partida da md10
-          </Text>
+          <Text style={styles.title}>{guildSelected.guild.name}</Text>
+          <Text style={styles.subtitle}>{guildSelected.description}</Text>
         </View>
       </ImageBackground>
       <ListHeader title={"Jogadores"} subtitle={"Total: 3"} />
