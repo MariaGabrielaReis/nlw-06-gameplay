@@ -1,19 +1,41 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, TouchableOpacity, TouchableOpacityProps } from "react-native";
 /* essa opção de botão se adequa melhor ao estilo de botão cada sistema */
 import { RectButton, RectButtonProps } from "react-native-gesture-handler";
 
 import { styles } from "./styles";
+import { theme } from "../../global/styles/theme";
 
 /* dá pra fazer propriedades baseadas em propriedades pré-existentes */
-type Props = RectButtonProps & {
+type Props = TouchableOpacityProps & {
   title: string;
+  non_filled?: boolean;
+  logout?: boolean;
 };
 
-export function Button({ title, ...rest }: Props) {
+export function Button({ title, non_filled, logout, ...rest }: Props) {
   return (
-    <RectButton style={styles.container} {...rest}>
-      <Text style={styles.title}>{title}</Text>
-    </RectButton>
+    <TouchableOpacity
+      style={[
+        styles.container,
+        {
+          backgroundColor: non_filled
+            ? theme.colors.background
+            : theme.colors.primary,
+          width: logout ? 160 : "100%",
+          marginRight: logout ? 16 : 0,
+        },
+      ]}
+      {...rest}
+    >
+      <Text
+        style={[
+          styles.title,
+          { color: non_filled ? theme.colors.secondary : theme.colors.heading },
+        ]}
+      >
+        {title}
+      </Text>
+    </TouchableOpacity>
   );
 }

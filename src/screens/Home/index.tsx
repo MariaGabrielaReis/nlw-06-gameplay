@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { View, FlatList } from "react-native";
+import { View, FlatList, Alert } from "react-native";
 import { useNavigation, useFocusEffect } from "@react-navigation/native";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -14,6 +14,7 @@ import { ListHeader } from "../../components/ListHeader";
 import { Appointment, AppointmentProps } from "../../components/Appointment";
 import { ListDivider } from "../../components/ListDivider";
 import { Load } from "../../components/Load";
+import { Button } from "../../components/Button";
 
 export function Home() {
   const [category, setCategory] = useState("");
@@ -52,6 +53,26 @@ export function Home() {
       loadAppointments();
     }, [category])
   );
+
+  async function deleteAppointments() {
+    await AsyncStorage.removeItem(COLLECTION_APPOINTMENTS);
+  }
+
+  async function handleDeleteAppointments() {
+    Alert.alert("Caaaalma", "Quer mesmo limpar a agenda?", [
+      {
+        text: "Não, não",
+        style: "cancel",
+      },
+      {
+        text: "Manda bala",
+        onPress: () => {
+          deleteAppointments();
+          navigation.navigate("Home");
+        },
+      },
+    ]);
+  }
 
   /* 
     Flatlist é boa opção quando se precisa listar muitos itens: ela
@@ -94,6 +115,13 @@ export function Home() {
             style={styles.matches}
             showsVerticalScrollIndicator={false}
           />
+
+          <View style={styles.footer}>
+            <Button
+              title={"Excluir todas as partidas"}
+              onPress={handleDeleteAppointments}
+            />
+          </View>
         </>
       )}
     </View>

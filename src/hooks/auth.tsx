@@ -17,7 +17,7 @@ const { CLIENT_ID } = process.env;
 const { CDN_IMAGE } = process.env;
 
 import { api } from "../services/api";
-import { COLLECTION_USERS } from "../configs/database";
+import { COLLECTION_APPOINTMENTS, COLLECTION_USERS } from "../configs/database";
 
 type User = {
   id: string;

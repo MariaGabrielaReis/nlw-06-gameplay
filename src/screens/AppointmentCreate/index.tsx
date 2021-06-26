@@ -5,10 +5,12 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Platform,
+  Alert,
 } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
 /* lib para ícones */
 import { Feather } from "@expo/vector-icons";
+import { parseISO, isAfter, addHours } from "date-fns";
 
 import uuid from "react-native-uuid";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -59,25 +61,61 @@ export function AppointmentCreate() {
   }
 
   async function handleSave() {
-    const newAppointment = {
-      id: uuid.v4(),
-      guild,
-      category,
-      date: `${day}/${month} às ${hour}:${minute}`,
-      description,
-    };
+    const dateTimeNotification = `2021-${month}-${day} ${hour}:${minute}:00`;
+    const parsedDate = addHours(parseISO(dateTimeNotification), -3);
 
-    const storage = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
+    const future = isAfter(parsedDate, addHours(new Date(), -3));
 
-    const appointments = storage ? JSON.parse(storage) : [];
+    if (!future) {
+      Alert.alert(
+        "Viajante no tempo é?",
+        "Informe uma data e hora válida no futuro, não no passado ou dados inválidos!",
+        [
+          {
+            text: "Fechou",
+          },
+        ]
+      );
+    } else {
+      const newAppointment = {
+        id: uuid.v4(),
+        guild,
+        category,
+        date: `${day}/${month} às ${hour}:${minute}`,
+        description,
+        dateTimeNotification: parsedDate,
+      };
 
-    await AsyncStorage.setItem(
-      COLLECTION_APPOINTMENTS,
-      JSON.stringify([...appointments, newAppointment])
-    );
+      if (
+        !newAppointment.guild ||
+        !newAppointment.category ||
+        !newAppointment.date ||
+        !newAppointment.description
+      ) {
+        Alert.alert(
+          "Não tá esquecendo nada não?",
+          "Preencha todos os campos para agendar uma partida!",
+          [
+            {
+              text: "Beleza",
+            },
+          ]
+        );
+      } else {
+        const storage = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
 
-    navigation.navigate("Home");
+        const appointments = storage ? JSON.parse(storage) : [];
+
+        await AsyncStorage.setItem(
+          COLLECTION_APPOINTMENTS,
+          JSON.stringify([...appointments, newAppointment])
+        );
+
+        navigation.navigate("Home");
+      }
+    }
   }
+
   /* a Scroll View tbm permite a rolagem da tela toda (pra dispositivos menores) */
   return (
     <KeyboardAvoidingView
