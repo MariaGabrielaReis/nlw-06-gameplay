@@ -1,3 +1,4 @@
+/* centralização da parte do contexto */
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
 import * as AuthSession from "expo-auth-session";
@@ -46,13 +47,16 @@ function AuthProvider({ children }: AuthProviderProps) {
     try {
       setLoading(true);
 
+      /* URL para autenticação com o Discord */
       const authUrl = `${api.defaults.baseURL}/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`;
 
+      /* criação da sessão */
       const { type, params } = (await AuthSession.startAsync({
         authUrl,
       })) as AuthorizationResponse;
 
       if (type === "success") {
+        /* captura dos dados do usuário e do token - pra identificar o 'usuário' (conseguir o response certo) */
         api.defaults.headers.authorization = `Bearer ${params.access_token}`;
 
         const userInfo = await api.get("/users/@me");

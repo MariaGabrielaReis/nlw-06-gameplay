@@ -7,6 +7,7 @@ import {
   Platform,
 } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
+/* lib para ícones */
 import { Feather } from "@expo/vector-icons";
 
 import { styles } from "./styles";
@@ -43,16 +44,16 @@ export function AppointmentCreate() {
   function handleCategorySelect(categoryId: string) {
     setCategory(categoryId);
   }
-
+  /* a Scroll View tbm permite a rolagem da tela toda (pra dispositivos menores) */
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
     >
+      <Header title={"Agendar partida"} />
+
       <ScrollView>
         <View style={styles.container}>
-          <Header title={"Agendar partida"} />
-
           <Text style={[styles.label, { marginLeft: 24, marginTop: 32 }]}>
             Categoria
           </Text>
@@ -117,7 +118,6 @@ export function AppointmentCreate() {
           </View>
         </View>
       </ScrollView>
-
       <ModalView visible={openGuildModal} closeModal={handleCloseGuilds}>
         <Guilds handleGuildSelect={handleGuildSelect} />
       </ModalView>

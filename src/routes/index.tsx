@@ -8,6 +8,7 @@ import { SignIn } from "../screens/SignIn";
 export function Routes() {
   const { user } = useAuth();
 
+  /* se tiver usuário logado, vai direto pra home */
   return (
     <NavigationContainer>
       {user.id ? <AuthRoutes /> : <SignIn />}

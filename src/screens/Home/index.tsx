@@ -69,7 +69,12 @@ export function Home() {
   function handleAppointmentCreate() {
     navigation.navigate("AppointmentCreate");
   }
-
+  /* 
+    Flatlist é boa opção quando se precisa listar muitos itens: ela
+    renderiza só os itens que vão aparecer na tela, e não todos de uma vez
+    != 
+    Scrollview (category select): melhor quando tem menos elementos
+  */
   return (
     <View style={styles.container}>
       <View style={styles.header}>
