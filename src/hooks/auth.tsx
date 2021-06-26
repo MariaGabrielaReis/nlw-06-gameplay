@@ -3,13 +3,12 @@ import React, { createContext, useContext, useState, ReactNode } from "react";
 
 import * as AuthSession from "expo-auth-session";
 
-import {
-  REDIRECT_URI,
-  SCOPE,
-  RESPONSE_TYPE,
-  CLIENT_ID,
-  CDN_IMAGE,
-} from "../configs";
+const { REDIRECT_URI } = process.env;
+const { SCOPE } = process.env;
+const { RESPONSE_TYPE } = process.env;
+const { CLIENT_ID } = process.env;
+const { CDN_IMAGE } = process.env;
+
 import { api } from "../services/api";
 
 type User = {
@@ -33,7 +32,8 @@ type AuthProviderProps = {
 
 type AuthorizationResponse = AuthSession.AuthSessionResult & {
   params: {
-    access_token: string;
+    access_token?: string;
+    error?: string;
   };
 };
 
@@ -55,7 +55,11 @@ function AuthProvider({ children }: AuthProviderProps) {
         authUrl,
       })) as AuthorizationResponse;
 
-      if (type === "success") {
+      /* 
+        só avança se a autenticação aconteceu 
+        e não deu erro (como não aceitar a autenticação) 
+      */
+      if (type === "success" && !params.error) {
         /* captura dos dados do usuário e do token - pra identificar o 'usuário' (conseguir o response certo) */
         api.defaults.headers.authorization = `Bearer ${params.access_token}`;
 
@@ -68,13 +72,12 @@ function AuthProvider({ children }: AuthProviderProps) {
           firstName,
           token: params.access_token,
         });
-
-        setLoading(false);
-      } else {
-        setLoading(false);
       }
     } catch {
       throw new Error("Não foi possível autenticar");
+    } finally {
+      /* independente se deu certo ou errado a autenticação, ele tira o loading */
+      setLoading(false);
     }
   }
 
