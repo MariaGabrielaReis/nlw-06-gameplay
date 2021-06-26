@@ -10,6 +10,7 @@ export const theme = {
     highlight: "#ABB1CC",
     heading: "#DDE3F0",
     on: "#32BD50",
+    discord: "#7289DA",
   },
   fonts: {
     title700: "Rajdhani_700Bold",

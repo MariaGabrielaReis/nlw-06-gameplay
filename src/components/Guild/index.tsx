@@ -26,7 +26,7 @@ type Props = TouchableOpacityProps & {
 export function Guild({ data, ...rest }: Props) {
   return (
     <TouchableOpacity style={styles.container} activeOpacity={0.7} {...rest}>
-      <GuildIcon />
+      <GuildIcon guildId={data.id} iconId={data.icon} />
       <View style={styles.content}>
         <View>
           <Text style={styles.title}>{data.name}</Text>
