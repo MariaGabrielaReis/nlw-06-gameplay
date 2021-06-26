@@ -6,7 +6,7 @@ import { theme } from "../../global/styles/theme";
 
 import { Avatar } from "../Avatar";
 
-type MemberProps = {
+export type MemberProps = {
   id: string;
   username: string;
   avatar_url: string;
