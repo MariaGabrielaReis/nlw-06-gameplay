@@ -28,23 +28,40 @@ As seguintes tecnologias e ferramentas estão sendo utilizadas neste projeto:
 - [X] Login com autenticação utilizando o Discord
 - [X] Listagem de partidas agendadas
 - [X] Agendamento de novas partidas
+  - [X] ADICIONAL: Verificação se todos os campos para agendar a partida estão preenchidos
+  - [X] ADICIONAL: Verificação se a data e hora escolhida são válidas (apenas datas futuras)
+- [X] ADICIONAL: Exclusão de todas as partidas realizadas
 - [X] Visualização de detalhes da partida
-- [X] Compartilhamento de link para servidor/partida
+  - [X] ADICIONAL: Lembrete de quando a partida irá ocorrer, ou se já ocorreu
+  - [X] ADICIONAL: Tratamento de erro caso o servidor não tenha widget ativado
+- [X] Compartilhamento de link para servidor
+- [X] ADICIONAL: Modal de "logout"
+
+- [ ] Outras ideias: Edição e exclusão de partida, deixar o botão de "entrar na partida" desabilitado até o horário agendado, gerar notificação 10 minutos antes do início da partida...
 
 <span id="demo">
   
 ## :iphone: Demonstração
 Abaixo é possível encontrar uma demonstração das telas e funcionalidades do projeto desenvolvido, com a alteração de cores e algumas imagens, mas se quiser 
 conferir o layout original das telas, é só acessar [este link](https://www.figma.com/file/0kv33XYjvOgvKGKHBaiR07/GamePlay---NLW-Together/duplicate) para o projeto no Figma.
-
+  
 > Em breve
 
 <span id="requisitos">
 
 ## :gear: Como rodar
-Com o [Node](https://nodejs.org/en/) e o [Expo](https://expo.io/) instalados em sua máquina e um emulador ou o [Expo Go](https://expo.io/client) no dispositivo físico, baixe ou clone este repositório e 
-siga o passo a passo descrito abaixo.
-
+Com o [Node](https://nodejs.org/en/) e o [Expo](https://expo.io/) instalados em sua máquina e um emulador ou o [Expo Go](https://expo.io/client) no dispositivo físico, baixe ou clone este repositório e siga o passo a passo descrito abaixo.
+  
+[Cadastre o aplicativo](https://discord.com/developers/applications) no Discord para conseguir acesso ao serviço de autenticação, colocando o redirect como `https://auth.expo.io/@<seu usuário no expo>/gameplay` e marcando, na aba "OAuth2", as 4 primeiras opções para o escopo, definindo essas configurações também em um arquivo `.env` no projeto (siga o exemplo do arquivo ".env.example", retirando o '.exemple' depois).
+ 
+ ```cl
+REDIRECT_URI=
+SCOPE=
+RESPONSE_TYPE=
+CLIENT_ID=
+CDN_IMAGE=
+```
+Agora, por um terminal...
 ```bash
 # Acesse a pasta do projeto
 $ cd nlw-06-gameplay
