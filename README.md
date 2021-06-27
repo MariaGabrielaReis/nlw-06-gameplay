@@ -45,7 +45,9 @@ As seguintes tecnologias e ferramentas estão sendo utilizadas neste projeto:
 Abaixo é possível encontrar uma demonstração das telas e funcionalidades do projeto desenvolvido, com a alteração de cores e algumas imagens, mas se quiser 
 conferir o layout original das telas, é só acessar [este link](https://www.figma.com/file/0kv33XYjvOgvKGKHBaiR07/GamePlay---NLW-Together/duplicate) para o projeto no Figma.
   
-> Em breve
+<p align="center">
+  <img alt="Demonstração" src=".github/demo-com-melhorias.gif" width="230px" />
+</p>
 
 <span id="requisitos">
 
