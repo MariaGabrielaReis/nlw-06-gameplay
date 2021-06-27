@@ -68,7 +68,7 @@ export function Home() {
         text: "Manda bala",
         onPress: () => {
           deleteAppointments();
-          navigation.navigate("Home");
+          navigation.navigate("DropDatabaseSuccess");
         },
       },
     ]);
@@ -94,6 +94,11 @@ export function Home() {
 
       {loading ? (
         <Load />
+      ) : appointments.length < 1 ? (
+        <ListHeader
+          title={"Agende uma partida para começar!"}
+          subtitle={`em "+"`}
+        />
       ) : (
         <>
           <ListHeader

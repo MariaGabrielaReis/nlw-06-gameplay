@@ -4,7 +4,6 @@ import {
   ImageBackground,
   Text,
   FlatList,
-  Alert,
   Share,
   Platform,
 } from "react-native";
@@ -25,7 +24,6 @@ import { ListHeader } from "../../components/ListHeader";
 import { Member, MemberProps } from "../../components/Member";
 import { ListDivider } from "../../components/ListDivider";
 import { ButtonIcon } from "../../components/ButtonIcon";
-import { Button } from "../../components/Button";
 import { AppointmentProps } from "../../components/Appointment";
 import { Load } from "../../components/Load";
 
@@ -63,16 +61,6 @@ export function AppointmentDetails() {
       setWidget(response.data);
     } catch (error) {
       setError(true);
-      // Alert.alert(
-      //   "Ops...",
-      //   "Verifique as configurações do servidor. Será que o widget está habilitado?",
-      //   [
-      //     {
-      //       text: "Ok!",
-      //       onPress: () => handleGoBack(),
-      //     },
-      //   ]
-      // );
     } finally {
       setLoading(false);
     }

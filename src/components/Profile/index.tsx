@@ -45,7 +45,12 @@ export function Profile() {
         <View style={styles.modalContainer}>
           <Text style={styles.modalMessage}>Quer mesmo sair?</Text>
           <View style={styles.modalContent}>
-            <Button title={"Não"} logout non_filled />
+            <Button
+              title={"Não"}
+              logout
+              non_filled
+              onPress={handleCloseModal}
+            />
             <Button title={"Sim"} onPress={handleLogOut} logout />
           </View>
         </View>
